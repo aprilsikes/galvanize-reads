@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+    h1 Books
+    if books
+      for book in books
+        .books
+          img.cover(src='#{book.cover_url}')
+          p #{book.title}
+          p 
+            a(href='')
+          p.it #{book.genre} 
+          p #{book.description}
+        
