@@ -30,10 +30,21 @@ router.post('/', function (req, res, next) {
     res.render('books/new', {info: req.body, errors: errors})
   } else {
     Books().insert(req.body).then(function (results) {
-      console.log(results);
       res.redirect('/books');
     })
   }
+})
+
+router.get('/:id/delete', function (req, res, next) {
+  Books().where('id', req.params.id).first().then(function (results) {
+  res.render('books/delete', {book: results});
+  })
+})
+
+router.post('/:id/delete', function (req, res, next) {
+  Books().where('id', req.params.id).del().then(function (results) {
+    res.redirect('/books');
+  })  
 })
 
 module.exports = router;

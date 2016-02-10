@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  if book
+    .main
+      .containeru
+        img.cover(src='#{book.cover_url}')
+      .containero
+        p.title #{book.title}
+        p By
+          a(href='')
+        p.it #{book.genre}
+        p #{book.description}
+      form(action='/books/#{book.id}/delete' method='post')
+        input.btn.btn-link#delB(type='submit' value='Delete Book?')
