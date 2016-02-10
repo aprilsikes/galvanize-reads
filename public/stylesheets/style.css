@@ -14,20 +14,84 @@ a {
 .head{
   display: flex;
   flex-direction: row;
+  margin-bottom: 25px;
 }
 
 .headT {
   font-size: 37px;
 }
 
-.books {
+.container {
+  display: flex;
+  align-self: center;
+  /*align-content: space-between;*/
+  width: 50%;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  margin-top: 20px;
+}
+
+.containeru {
 
 }
 
 .cover {
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 130px;
+  max-height: 130px;
+  margin-right: 15px;
 }
+
+.containero {
+  align-self: center;
+  width: 50%;
+}
+
+.title {
+  font-size: 25px;
+  margin-top: 0;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.red {
+  color: red;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.t {
+  height: 25px;
+  margin: 0 0 15px 0;
+}
+
+.addAs {
+  display: flex;
+  flex-direction: row;
+}
+
+#addA {
+  width: 90px;
+  height: 35px;
+  font-size: 12px
+}
+
+.btn {
+  width: 100%;
+  height: 60px;
+  align-self: center;
+  font-size: 25px;
+}
+
 
 .it {
   font-style: italic;

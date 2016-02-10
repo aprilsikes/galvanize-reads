@@ -3,44 +3,39 @@ extends ../layout
 block content
     
   div.container
-    form(action='/books' method='post')
+    form(action='/books' method='POST')
       div.errors
         if errors
           for error in errors
             p.red= error
-      div.form-group
+      div.form
         label(for='title') Title
-        br
-        input.form-control(type='text' id='title' placeholder='Enter Title' name='title' value= info ? info.title : '')
-      div.form-group
+        input.form-control.t(type='text' id='title' placeholder='Enter Title' name='title' value= info ? info.title : '')
+      div.form
         label(for='genre') Genre
-        br
-        input.form-control(type='text' id='genre' placeholder='Enter Genre' name='genre' value= info ? info.genre : '')
-      div.form-group
+        input.form-control.t(type='text' id='genre' placeholder='Enter Genre' name='genre' value= info ? info.genre : '')
+      div.form
         label(for='cover_url') Cover Image URL
-        br
-        input.form-control(type='text' id='cover_url' placeholder='Enter URL' name='cover_url' value= info ? info.cover_url : '')
-      div.form-group
-        label(for='description')
+        input.form-control.t(type='text' id='cover_url' placeholder='Enter URL' name='cover_url' value= info ? info.cover_url : '')
+      div.form
+        label(for='description') Description
         textarea.form-control(rows='10' id='description' placeholder='Enter Description' name='description' value= info ? info.description : '')
-      //- div.form-group
-      //-   label(for='author_id')
-      //-   textarea.form-control(rows='5' id='author_id' placeholder='Add an Author' name='author_id' value= info ? info.author_id : '')
-      div.form-group
-          label(for='author') Author
-          br
-          select(type='text' id='author' name='author')
-            option= info ? info.author : 'Select an Author'
-            option(value='African') African
-            option(value='American') American
-            option(value='Breakfast') Breakfast
-            option(value='Cajun') Cajun
-            option(value='Indian') Indian
-            option(value='Italian') Italian
-            option(value='Mexican') Mexican
-            option(value='Sushi') Sushi
-            option(value='Thai') Thai
-            option(value='Vietnamese') Vietnamese
+      //- div.form
+      //-   label(for='author') Authors
+      //-   textarea.form-control(rows='5' id='author' name='author' value= info ? info.author : '')
+      //- div.addAs
+      //-   div.form.form-control.t
+      //-       label(for='author_name')
+      //-       br
+      //-       select(type='text' id='author_name' name='author_name' style='width: 180px; height: 35px; font-size: 15px')
+      //-         option= info ? info.author : 'Select an Author'
+      //-         option(value='Alex Martelli') Alex Martelli
+      //-         option(value='Anna Ravenscroft') Anna Ravenscroft
+      //-         option(value='Steve Holden') Steve Holden
+      //-         option(value='Allen B. Downey') Allen B. Downey
+      //-         option(value='Bonnie Eisenman') Bonnie Eisenman
+      //-         option(value='Kyle Simpson') Kyle Simpson
+      //-   div.buttons
+      //-     button#addA(type='submit') Add Author
       div.buttons
-        button.btn.btn-primary#sub(type='submit') Add Book
-        a.btn.btn-primary(href='/restaurants') Cancel
+        button.btn.btn-primary#addB(type='submit') Add Book
