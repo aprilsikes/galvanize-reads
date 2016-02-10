@@ -8,6 +8,7 @@ block content
             img.cover(src='#{book.cover_url}')
           .containero
             p.title #{book.title}
+            a(href='/books/#{book.id}/edit') Edit
             a(href='/books/#{book.id}/delete') Remove     
             p By
               a(href='')
