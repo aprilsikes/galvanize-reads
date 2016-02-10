@@ -10,12 +10,12 @@ function Books() {
 
 router.get('/', function (req, res, next) {
   Books().select().then(function (results) {
-    res.render('books/index', {books: results})
+    res.render('books/index', {books: results});
   })
 })
 
 router.get('/new', function (req, res, next) {
-  res.render('books/new')
+  res.render('books/new');
 })
 
 router.post('/', function (req, res, next) {
@@ -27,7 +27,7 @@ router.post('/', function (req, res, next) {
   }
   var errors = validate(req.body);
   if (errors.length) {
-    res.render('books/new', {info: req.body, errors: errors})
+    res.render('books/new', {info: req.body, errors: errors});
   } else {
     Books().insert(req.body).then(function (results) {
       res.redirect('/books');
@@ -49,7 +49,7 @@ router.post('/:id/delete', function (req, res, next) {
 
 router.get('/:id/edit', function (req, res, next) {
   Books().where('id', req.params.id).first().then(function (results) {
-    res.render('books/edit', {book: results})
+    res.render('books/edit', {book: results});
   })
 })
 
@@ -57,13 +57,19 @@ router.post('/:id/update', function (req, res, next) {
   var errors = validate(req.body);
   if (errors.length) {
     Books().where('id', req.params.id).first().then(function (results) {
-      res.render('books/edit', {book: results, errors: errors})
+      res.render('books/edit', {book: results, errors: errors});
     })
   } else {
     Books().where('id', req.params.id).update(req.body).then(function (results) {
       res.redirect('/books');
     })
   }
+})
+
+router.get('/:id', function (req, res, next) {
+  Books().where('id', req.params.id).first().then(function (results) {
+    res.render('books/show', {book: results});
+  })
 })
 
 module.exports = router;
