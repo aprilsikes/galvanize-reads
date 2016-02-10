@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+    if authors
+      for author in authors
+        .main
+          .containeru
+            img.cover(src='#{author.portrait_url}')
+          .containero
+            p.title: a(href='/authors/#{author.id}') #{author.first_name} #{author.last_name}
+            a(href='/authors/#{author.id}/edit') Edit
+            br
+            a(href='/authors/#{author.id}/delete') Remove     
+            p #{author.biography}
+            
+      a(href='/authors/new') Add an Author
+        

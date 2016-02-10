@@ -8,9 +8,20 @@ function Books() {
   return knex('books');
 }
 
+function Authors() {
+  return knex('authors');
+}
+
+// function AuthorBook() {
+//   return knex('author_book');
+// }
+
 router.get('/', function (req, res, next) {
-  Books().select().then(function (results) {
-    res.render('books/index', {books: results});
+  Books().then(function (results) {
+    Authors().join('author_book', 'author_book.author_id', 'authors.id').then(function (payload) {
+      console.log(payload);
+        res.render('books/index', {books: results, author: payload});
+    })
   })
 })
 
