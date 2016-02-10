@@ -44,7 +44,26 @@ router.get('/:id/delete', function (req, res, next) {
 router.post('/:id/delete', function (req, res, next) {
   Books().where('id', req.params.id).del().then(function (results) {
     res.redirect('/books');
-  })  
+  })
+})
+
+router.get('/:id/edit', function (req, res, next) {
+  Books().where('id', req.params.id).first().then(function (results) {
+    res.render('books/edit', {book: results})
+  })
+})
+
+router.post('/:id/update', function (req, res, next) {
+  var errors = validate(req.body);
+  if (errors.length) {
+    Books().where('id', req.params.id).first().then(function (results) {
+      res.render('books/edit', {book: results, errors: errors})
+    })
+  } else {
+    Books().where('id', req.params.id).update(req.body).then(function (results) {
+      res.redirect('/books');
+    })
+  }
 })
 
 module.exports = router;

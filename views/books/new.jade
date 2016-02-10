@@ -19,7 +19,7 @@ block content
         input.form-control.t(type='text' id='cover_url' placeholder='Enter URL' name='cover_url' value= info ? info.cover_url : '')
       div.form
         label(for='description') Description
-        textarea.form-control(rows='10' id='description' placeholder='Enter Description' name='description' value= info ? info.description : '')
+        textarea.form-control(rows='10' id='description' placeholder='Enter Description' name='description')= info ? info.description : ''
       //- div.form
       //-   label(for='author') Authors
       //-   textarea.form-control(rows='5' id='author' name='author' value= info ? info.author : '')
