@@ -17,6 +17,31 @@ a {
   margin-bottom: 25px;
 }
 
+.side {
+  display: flex;
+  flex-direction: column;
+  max-width: 130px;
+  height: 700px;
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  background: #7B5442;
+  max-width: 150px;
+  max-height: 300px;
+  margin-bottom: 30px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+  background: #7B5442;
+  max-width: 150px;
+  max-height: 300px;
+  margin
+}
+
 .headT {
   font-size: 37px;
 }
@@ -24,19 +49,21 @@ a {
 .container {
   display: flex;
   align-self: center;
-  /*align-content: space-between;*/
   width: 50%;
 }
 
 .main {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-self: center;
-  margin-top: 20px;
+  margin-top: 30px;
+  max-width: 850px;
+  float: right;
 }
 
-.containeru {
-
+.ad {
+  align-self: flex-end;
 }
 
 .cover {
@@ -47,7 +74,7 @@ a {
 
 .containero {
   align-self: center;
-  width: 50%;
+  width: 60%;
 }
 
 .title {
@@ -102,4 +129,27 @@ form {
 
 .it {
   font-style: italic;
+}
+
+.index {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+.left {
+  width: 50%;
+  align-self: center;
+  margin: 20px;
+}
+
+.right{
+  width: 50%;
+  align-self: center;
+  margin: 20px;
+}
+
+.a, .b {
+  font-size: 25px;
+  text-align: center;
 }
