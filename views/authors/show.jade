@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  
+  if author
+    .main
+      .containeru
+        img.cover(src='#{author.portrait_url}')
+      .containero
+        p.title #{author.first_name} #{author.last_name}
+        a(href='/authors/#{author.id}/edit') Edit
+        br
+        a(href='/authors/#{author.id}/delete') Remove     
+        p #{author.biography}

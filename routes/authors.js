@@ -70,4 +70,10 @@ router.post('/:id/update', function (req, res, next) {
   }
 })
 
+router.get('/:id', function (req, res, next) {
+  Authors().where('id', req.params.id).first().then(function (results) {
+    res.render('authors/show', {author: results});
+  })
+})
+
 module.exports = router;
