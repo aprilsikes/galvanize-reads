@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  if author
+    .main
+      .containeru
+        img.cover(src='#{author.portrait_url}')
+      .containero
+        p.title #{author.first_name} #{author.last_name}
+        p #{author.biography}
+      form(action='/authors/#{author.id}/delete' method='post')
+        input.btn.btn-link#delB(type='submit' value='Delete Author?')

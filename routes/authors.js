@@ -39,4 +39,16 @@ router.post('/', function (req, res, next) {
   }
 })
 
+router.get('/:id/delete', function (req, res, next) {
+  Authors().where('id', req.params.id).first().then(function (results) {
+  res.render('authors/delete', {author: results});
+  })
+})
+
+router.post('/:id/delete', function (req, res, next) {
+  Authors().where('id', req.params.id).del().then(function (results) {
+    res.redirect('/authors');
+  })
+})
+
 module.exports = router;
