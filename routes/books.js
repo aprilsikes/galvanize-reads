@@ -18,6 +18,9 @@ function Authors() {
 
 router.get('/', function (req, res, next) {
   Books().then(function (results) {
+    // Authors().select('first_name', 'last_name').join('author_book', 'authors.id', '=', 'author_book.author_id').where('author_book.book_id', req.body.id).then(function (payload) {
+    //
+    // })
     // Authors().join('author_book', 'author_book.author_id', 'authors.id').then(function (payload) {
     //   console.log(payload);
         res.render('books/index', {books: results});
