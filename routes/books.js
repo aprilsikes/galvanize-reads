@@ -18,10 +18,10 @@ function Authors() {
 
 router.get('/', function (req, res, next) {
   Books().then(function (results) {
-    Authors().join('author_book', 'author_book.author_id', 'authors.id').then(function (payload) {
-      console.log(payload);
+    // Authors().join('author_book', 'author_book.author_id', 'authors.id').then(function (payload) {
+    //   console.log(payload);
         res.render('books/index', {books: results});
-    })
+    // })
   })
 })
 
