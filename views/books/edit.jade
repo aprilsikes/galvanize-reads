@@ -23,19 +23,18 @@ block content
           textarea.form-control(rows='10' id='description' placeholder='Enter Description' name='description')= book.description
         //- div.form
         //-   label(for='author') Authors
-        //-   textarea.form-control(rows='5' id='author' name='author' value= info ? info.author : '')
+        //-   textarea.form-control(rows='5' id='author' name='author' value= book.author)
         //- div.addAs
         //-   div.form.form-control.t
         //-       label(for='author_name')
         //-       br
         //-       select(type='text' id='author_name' name='author_name' style='width: 180px; height: 35px; font-size: 15px')
-        //-         option= info ? info.author : 'Select an Author'
-        //-         option(value='Alex Martelli') Alex Martelli
-        //-         option(value='Anna Ravenscroft') Anna Ravenscroft
-        //-         option(value='Steve Holden') Steve Holden
-        //-         option(value='Allen B. Downey') Allen B. Downey
-        //-         option(value='Bonnie Eisenman') Bonnie Eisenman
-        //-         option(value='Kyle Simpson') Kyle Simpson
+        //-         option(value='Alex Martelli' selected=book.author_name==='Alex Martelli') Alex Martelli
+        //-         option(value='Anna Ravenscroft' selected=book.author_name==='Anna Ravenscroft') Anna Ravenscroft
+        //-         option(value='Steve Holden' selected=book.author_name==='Steve Holden') Steve Holden
+        //-         option(value='Allen B. Downey' selected=book.author_name==='Allen B. Downey') Allen B. Downey
+        //-         option(value='Bonnie Eisenman' selected=book.author_name==='Bonnie Eisenman') Bonnie Eisenman
+        //-         option(value='Kyle Simpson' seleceted=book.author_name==='Kyle Simpson') Kyle Simpson
         //-   div.buttons
         //-     button#addA(type='submit') Add Author
         div.buttons

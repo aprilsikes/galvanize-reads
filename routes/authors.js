@@ -51,4 +51,23 @@ router.post('/:id/delete', function (req, res, next) {
   })
 })
 
+router.get('/:id/edit', function (req, res, next) {
+  Authors().where('id', req.params.id).first().then(function (results) {
+    res.render('authors/edit', {author: results});
+  })
+})
+
+router.post('/:id/update', function (req, res, next) {
+  var errors = validator(req.body);
+  if (errors.length) {
+    Authors().where('id', req.params.id).first().then(function (results) {
+      res.render('authors/edit', {author: results, errors: errors});
+    })
+  } else {
+    Authors().where('id', req.params.id).update(req.body).then(function (results) {
+      res.redirect('/authors');
+    })
+  }
+})
+
 module.exports = router;

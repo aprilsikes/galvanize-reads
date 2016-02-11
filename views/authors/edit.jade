@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+    
+  if author
+    div.container
+      form(action='/authors/#{author.id}/update' method='POST')
+        div.errors
+          if errors
+            for error in errors
+              p.red= error
+        div.form
+          label(for='first_name') First Name
+          input.form-control.t(type='text' id='first_name' name='first_name' value= author.first_name)
+        div.form
+          label(for='last_name') Last Name
+          input.form-control.t(type='text' id='last_name' name='last_name' value= author.last_name)
+        div.form
+          label(for='portrait_url') Portrait URL
+          input.form-control.t(type='text' id='portrait_url' name='portrait_url' value= author.portrait_url)
+        div.form
+          label(for='biography') Biography
+          textarea.form-control(rows='10' id='biography' name='biography')= author.biography
+        //- div.form
+        //-   label(for='book') Books
+        //-   textarea.form-control(rows='5' id='book' name='book' value= author.book)
+        //- div.addAs
+        //-   div.form.form-control.t
+        //-       label(for='book_name')
+        //-       br
+        //-       select(type='text' id='book_name' name='book_name' style='width: 180px; height: 35px; font-size: 15px')
+        //-         option(value='Python In A Nutshell' selected=author.book_name==='Python In A Nutshell') Python In A Nutshell
+        //-         option(value='Think Python' selected=author.book_name==='Think Python') Think Python
+        //-         option(value='Learning React Native' selected=author.book_name==='Learning React Native') Learning React Native
+        //-         option(value='You Don't Know JS: ES6 & Beyond' selected=author.book_name==='You Don't Know JS: ES6 & Beyond') You Don't Know JS: ES6 & Beyond
+        //-         option(value='You Don't Know JS: Scope & Closure' selected=author.book_name==='You Don't Know JS: Scope & Closure') You Don't Know JS: Scope & Closure
+        //-         option(value='You Don't Know JS: Async & Performance' selected=author.book_name==='You Don't Know JS: Async & Performance') You Don't Know JS: Async & Performance
+        //-   div.buttons
+        //-     button#addA(type='submit') Add Book
+        div.buttons
+          button.btn.btn-primary#addB(type='submit') Edit Author
