@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+    
+  div.container
+    form(action='/authors' method='POST')
+      div.errors
+        if errors
+          for error in errors
+            p.red= error
+      div.form
+        label(for='first_name') First Name
+        input.form-control.t(type='text' id='first_name' placeholder='Enter First Name' name='first_name' value= info ? info.first_name : '')
+      div.form
+        label(for='last_name') Last Name
+        input.form-control.t(type='text' id='last_name' placeholder='Enter Last Name' name='last_name' value= info ? info.last_name : '')
+      div.form
+        label(for='portrait_url') Portrait URL
+        input.form-control.t(type='text' id='portrait_url' placeholder='Enter URL' name='portrait_url' value= info ? info.portrait_url : '')
+      div.form
+        label(for='biography') Description
+        textarea.form-control(rows='10' id='biography' placeholder='Enter Biography' name='biography')= info ? info.biography : ''
+      //- div.form
+      //-   label(for='book') Books
+      //-   textarea.form-control(rows='5' id='book' name='book' value= info ? info.book : '')
+      //- div.addAs
+      //-   div.form.form-control.t
+      //-       label(for='book_name')
+      //-       br
+      //-       select(type='text' id='book_name' name='book_name' style='width: 180px; height: 35px; font-size: 15px')
+      //-         option= info ? info.book : 'Select a Book'
+      //-         option(value='Python In A Nutshell') Python In A Nutshell
+      //-         option(value='Think Python') Think Python
+      //-         option(value='Learning React Native') Learning React Native
+      //-         option(value='You Don't Know JS: ES6 & Beyond') You Don't Know JS: ES6 & Beyond
+      //-         option(value='You Don't Know JS: Scope & Closure') You Don't Know JS: Scope & Closure
+      //-         option(value='You Don't Know JS: Async & Performance') You Don't Know JS: Async & Performance
+      //-   div.buttons
+      //-     button#addA(type='submit') Add Book
+      div.buttons
+        button.btn.btn-primary#addB(type='submit') Add Author
