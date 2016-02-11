@@ -12,19 +12,24 @@ function Authors() {
   return knex('authors');
 }
 
-// function AuthorBook() {
-//   return knex('author_book');
-// }
-
 router.get('/', function (req, res, next) {
   Books().then(function (results) {
-    // Authors().select('first_name', 'last_name').join('author_book', 'authors.id', '=', 'author_book.author_id').where('author_book.book_id', req.body.id).then(function (payload) {
-    //
-    // })
-    // Authors().join('author_book', 'author_book.author_id', 'authors.id').then(function (payload) {
-    //   console.log(payload);
-        res.render('books/index', {books: results});
-    // })
+    // var arr = [];
+    // for (var i = 0; i < results.length; i++) {
+    //   var obj = results[i];
+    //   arr.push(obj.id);
+    // } console.log(arr);
+      Authors().join('author_book', 'author_book.author_id', 'authors.id').then(function (payload) {
+        // Authors().select('first_name', 'last_name').join('author_book', 'author_book.author_id', 'authors.id').where('author_book.book_id', 'req.body.id').then(function (result) {
+        // var array = [];
+        // for (var count = 0; count < payload.length; count++) {
+        //   var obs = payload[count];
+        //   array.push(obs.book_id);
+        // } console.log(array);
+          res.render('books/index', {books: results});
+        // })
+        console.log(payload);
+    })
   })
 })
 
