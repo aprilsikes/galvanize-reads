@@ -19,6 +19,7 @@ router.get('/', function (req, res, next) {
     //   var obj = results[i];
     //   arr.push(obj.id);
     // } console.log(arr);
+    console.log(results[0].id);
       Authors().join('author_book', 'author_book.author_id', 'authors.id').then(function (payload) {
         // Authors().select('first_name', 'last_name').join('author_book', 'author_book.author_id', 'authors.id').where('author_book.book_id', 'req.body.id').then(function (result) {
         // var array = [];
@@ -26,12 +27,13 @@ router.get('/', function (req, res, next) {
         //   var obs = payload[count];
         //   array.push(obs.book_id);
         // } console.log(array);
-          res.render('books/index', {books: results});
+          res.render('books/index', {books: results, authors: payload});
         // })
         console.log(payload);
     })
   })
 })
+
 
 router.get('/new', function (req, res, next) {
   res.render('books/new');
