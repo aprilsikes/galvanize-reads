@@ -3,6 +3,8 @@ var router = express.Router();
 // var app = express();
 var knex = require('../db/knex');
 var validate = require('../lib/validations');
+var helpers = require('../lib/helpers');
+var Promise = require('bluebird');
 
 function Books() {
   return knex('books');
@@ -12,27 +14,29 @@ function Authors() {
   return knex('authors');
 }
 
+function Author_Book() {
+  return knex('author_book');
+}
+
 router.get('/', function (req, res, next) {
-  Books().then(function (results) {
-    // var arr = [];
-    // for (var i = 0; i < results.length; i++) {
-    //   var obj = results[i];
-    //   arr.push(obj.id);
-    // } console.log(arr);
-    console.log(results[0].id);
-      Authors().join('author_book', 'author_book.author_id', 'authors.id').then(function (payload) {
-        // Authors().select('first_name', 'last_name').join('author_book', 'author_book.author_id', 'authors.id').where('author_book.book_id', 'req.body.id').then(function (result) {
-        // var array = [];
-        // for (var count = 0; count < payload.length; count++) {
-        //   var obs = payload[count];
-        //   array.push(obs.book_id);
-        // } console.log(array);
-          res.render('books/index', {books: results, authors: payload});
-        // })
-        console.log(payload);
+  Books().select().then(function (books) {
+    Promise.all(books.map(function (book) {
+      return helpers.getBookAuthors(book).then(function (authors) {
+        book.authors = authors;
+        return book;
+      })
+    }))
+    .then(function (books) {
+      console.log(books);
+      res.render('books/index', {books: books})
     })
   })
 })
+// / get all books from Books
+  // using Promise.all map over the array of books
+  // for each book, get book authors
+  // add a property to each book object that is an array of its author objects
+  // pass an array of authors to the view using locals
 
 
 router.get('/new', function (req, res, next) {

@@ -12,11 +12,11 @@ block content
             a(href='/books/#{book.id}/edit') Edit
             br
             a(href='/books/#{book.id}/delete') Remove     
-            if authors
-              for author in authors
-                if author.book_id === book.id
-                  p By #{author.first_name} #{author.last_name}
-              a(href='')
+            p Authored By:
+            for author in book.authors
+              p  
+                a(href='/authors/#{author.id}') #{author.first_name} #{author.last_name}
+              
             p.it #{book.genre} 
             p #{book.description}
       a.ad(href='/books/new') Add a Book
