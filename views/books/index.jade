@@ -15,7 +15,8 @@ block content
             p Authored By:
             for author in book.authors
               p  
-                a(href='/authors/#{author.id}') #{author.first_name} #{author.last_name}
+                a(href='/authors/#{author.id}') 
+                #{author.first_name} #{author.last_name}
               
             p.it #{book.genre} 
             p #{book.description}
